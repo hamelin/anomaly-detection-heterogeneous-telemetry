@@ -1,0 +1,17 @@
+dask
+distributed
+flake8
+matplotlib
+mypy
+mypy_extensions
+python-igraph
+networkx
+numpy
+pandas
+pytest
+jupytest
+scikit-learn
+fastparquet>=0.3.2
+bokeh
+jupyter
+pycodestyle_magic
