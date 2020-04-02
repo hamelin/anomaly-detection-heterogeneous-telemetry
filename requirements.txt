@@ -15,4 +15,3 @@ fastparquet>=0.3.2
 bokeh
 jupyter
 pycodestyle_magic
-importnb
