@@ -1,6 +1,7 @@
 from importlib.abc import MetaPathFinder, Loader
 from importlib.machinery import ModuleSpec
 from importlib.util import spec_from_loader
+from IPython import get_ipython
 from nbformat.reader import read as read_notebook
 import os
 import os.path as op
@@ -34,7 +35,11 @@ class NotebookImporter(MetaPathFinder, Loader):
             notebook = read_notebook(file_notebook)
         for num_cell, cell in enumerate([c for c in notebook.cells if c.cell_type == "code"], 1):
             if not cell.source.strip().startswith("%") and "noimport" not in cell.metadata.get("tags", []):
-                code = compile(cell.source, f"{name_notebook} Cell {num_cell}", "exec")
+                name_cell = f"{name_notebook} Cell {num_cell}"
+                ipython = get_ipython()
+                if ipython:
+                    name_cell = ipython.compile.cache(cell.source)
+                code = compile(cell.source, name_cell, "exec")
                 exec(code, module.__dict__)
 
 
