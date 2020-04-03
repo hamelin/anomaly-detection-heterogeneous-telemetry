@@ -9,7 +9,7 @@ networkx
 numpy
 pandas
 pytest
-jupytest
+jupytest>2.0.1
 scikit-learn
 fastparquet>=0.3.2
 bokeh
