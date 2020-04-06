@@ -1,4 +1,4 @@
-dask
+dask[dataframe]
 distributed
 flake8
 matplotlib
